@@ -1,0 +1,2 @@
+int age,String gender,
+			String content,String departmentId

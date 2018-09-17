@@ -1,0 +1,1 @@
+INSERT INTO `mjh`.`message` (`id`, `parentMessageId`, `content`, `senderId`, `receiverId`, `senderType`, `receiverType`, `questionId`) VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
