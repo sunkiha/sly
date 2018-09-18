@@ -1,0 +1,16 @@
+apply plugin: 'com.android.application'
+apply from: '../buildCommon.gradle'
+// 添加插件
+apply plugin: 'com.mob.sdk'
+
+// 在MobSDK的扩展中注册UMSSDK的相关信息
+MobSDK {
+    appKey "27dc09e8f5bfc"
+    appSecret "906ee6d8f91cf7d6f0d00ea56a2a2150"
+    MobIM {}
+}
+
+dependencies {
+    implementation 'com.android.support:support-v4:25.0.1'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+}
