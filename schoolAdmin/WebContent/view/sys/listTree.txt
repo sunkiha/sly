@@ -1,0 +1,22 @@
+﻿[
+	{id: "lists", text: "Lists",checked:true},
+	
+	{id: "datagrid", text: "DataGrid", pid: "lists", checked:true},			
+	{id: "tree", text: "Tree", pid: "lists"},
+	{id: "treegrid", text: "TreeGrid ", pid: "lists"},
+
+	{id: "layouts", text: "Layouts",checked:true},
+	
+	{id: "panel", text: "Panel", pid: "layouts"},
+	{id: "splitter", text: "Splitter", pid: "layouts"},
+	{id: "layout", text: "Layout ", pid: "layouts"},
+
+	{id: "navigations", text: "Navigations"},
+			
+	{id: "toolbar", text: "Toolbar", pid: "navigations"},
+	{id: "tabs", text: "Tabs", pid: "navigations"},
+	{id: "outlookbar", text: "OutlookBar", pid: "navigations"},
+	{id: "menu", text: "Menu", pid: "navigations"},
+	{id: "pager", text: "Pager", pid: "navigations"},
+
+]

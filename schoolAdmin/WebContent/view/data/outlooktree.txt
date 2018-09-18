@@ -1,0 +1,10 @@
+﻿[
+	{ id: "goods", text: "商品管理"},
+	{ id: "goodsCategory/toindex", pid: "goods", text: "分类管理"},
+	{ id: "editUser", pid: "goods", text: "修改用户"},
+	{ id: "removeUser", pid: "goods", text: "删除用户"},
+		
+	{ id: "right", text: "权限管理"},
+	{ id: "addRight", pid: "right", text: "查询权限"},
+	{ id: "editRight", pid: "right", text: "操作权限", iconCls: "Reports", iconPosition: "top" }		
+]

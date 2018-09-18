@@ -1,0 +1,32 @@
+*{ margin:0px; padding:0px;}
+ul li{ list-style:none;}
+a{ text-decoration:none;}
+.red{ color:#F00;}
+#wrapper{ width:100%; height:100%; background:#fff; margin:0 auto;}
+#head{ height:100px; width:1200px; margin:0 auto;}
+#head a{ display:block; height:100px; width:200px;}
+.login{ width:1200px; height:450px; padding-top:50px; overflow:hidden; margin:0 auto;}
+.login .ad{ height:300px; width:300px; float:left; margin-left:150px; background:#999;}
+.login .ad img{ height:300px; width:300px; border:none;}
+.login ul{ width:300px; height:250px; float:right; margin-right:50px; padding:15px 15px; border:2px solid #ccc; border-top:2px solid #f63;}
+.login ul h1{ height:35px; line-height:35px; margin-bottom:15px; font-size:16px; font-family:16px; text-align:center; width:120px; border-bottom:1px solid #f63;}
+.login ul li{ height:35px; width:300px; margin-bottom:15px; clear:both;}
+.login ul li p{ float:left; height:35px; line-height:35px; width:80px; text-align:right; font-size:15px;}
+.login ul li .text{ float:left; height:33px; line-height:33px; border:1px solid #999; padding-left:45px; width:260px; text-align:left; font-size:13px;}
+.login ul li #name{ background:url(../images/name.jpg) no-repeat;}
+.login ul li #password{ background:url(../images/password.jpg) no-repeat;}
+.login ul li .btn{ display:block; height:35px; margin:0px auto; width:200px; text-align:center; line-height:35px; font-size:15px; background:#f63; color:#fff; border:none; cursor:pointer; border-radius:5px;}
+.login ul li a{ float:left; height:35px; line-height:35px; width:150px; text-align:center; color:#666;}
+.login ul li a:hover{ text-decoration:underline;}
+.regist{ width:800px; height:600px; margin:15px auto; background:#eee; overflow:hidden;}
+.regist h1{ height:45px; line-height:45px; text-align:center; width:100%; font-size:30px; font-family:"微软雅黑"; clear:both;}
+.regist ul{ float:left; height:600px; width:600px;}
+.regist ul li{ height:30px; width:300px; margin-bottom:15px; clear:both; text-align:center;}
+.regist ul li p{ float:left; height:30px; width:100px; text-align:right; line-height:30px;}
+.regist ul li span{ padding:0 15px;}
+.regist ul li span.ts{ float:left; height:22px; margin:4px 0px; width:250px; text-align:left; line-height:22px; padding-left:25px; overflow:hidden;}
+.regist ul li .onError{ background:url(../images/reg3.gif) no-repeat;}
+.regist ul li .onSuccess{ background:url(../images/reg4.gif) no-repeat;}
+.regist ul li .formtips{ display:none;}
+.regist ul li .text{ float:left; height:28px; border:1px solid #999; line-height:26px; padding-left:8px; width:180px;}
+.regist ul li #regist{ height:30px; width:200px; color:#fff; background:#f63; text-align:center; line-height:30px; cursor:pointer; border-radius:8px; border:none; margin:0 auto;}
