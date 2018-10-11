@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/tv_height"
+    tools:context="com.cloudabull.fangpai.usbtest.Main3Activity">
+
+    <TextView
+        android:id="@+id/tv_esc"
+        android:text="小票打印机："
+        android:gravity="center|left"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="@dimen/tv_fontsize"
+        android:layout_width="@dimen/tv_width"
+        android:layout_height="@dimen/tv_height"
+        android:layout_marginLeft="@dimen/tv_height"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <com.kyleduo.switchbutton.SwitchButton
+        android:id="@+id/esc_sb_setting"
+        android:layout_width="@dimen/bt_sb_width"
+        android:layout_height="@dimen/tv_height"
+        android:layout_marginLeft="@dimen/tv_height"
+        android:textColor="@color/write"
+        android:textSize="@dimen/tv_fontsize"
+        app:kswBackColor="@color/custom_back_color"
+        app:kswTextOff="关闭"
+        app:kswTextOn="开启"
+        app:kswTintColor="@color/write"
+        app:kswThumbColor="@color/write"
+        app:kswThumbHeight="@dimen/sb_h_w"
+        app:kswThumbWidth="@dimen/sb_h_w"
+        app:layout_constraintLeft_toRightOf="@+id/tv_esc"
+        app:layout_constraintTop_toTopOf="@+id/tv_esc"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_esc"
+        >
+    </com.kyleduo.switchbutton.SwitchButton>
+
+    <Button
+        android:id="@+id/esc_bt_print"
+        android:text="打印"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/write"
+        android:textSize="@dimen/tv_fontsize"
+        android:layout_width="@dimen/bt_sb_width"
+        android:layout_height="@dimen/tv_height"
+        android:layout_marginLeft="@dimen/tv_height"
+        app:layout_constraintLeft_toRightOf="@+id/esc_sb_setting"
+        app:layout_constraintTop_toTopOf="@+id/tv_esc"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_esc"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_tsc"
+        android:text="标签打印机："
+        android:gravity="center|left"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="@dimen/tv_fontsize"
+        android:layout_width="@dimen/tv_width"
+        android:layout_height="@dimen/tv_height"
+        android:layout_marginLeft="@dimen/tv_height"
+        android:layout_marginTop="@dimen/tv_height"
+        app:layout_constraintTop_toBottomOf="@+id/tv_esc"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+
+    <com.kyleduo.switchbutton.SwitchButton
+        android:id="@+id/tsc_sb_setting"
+        android:layout_width="@dimen/bt_sb_width"
+        android:layout_height="@dimen/tv_height"
+        android:layout_marginLeft="@dimen/tv_height"
+        android:textColor="@color/write"
+        android:textSize="@dimen/tv_fontsize"
+        app:kswBackColor="@color/custom_back_color"
+        app:kswTextOff="关闭"
+        app:kswTextOn="开启"
+        app:kswTintColor="@color/write"
+        app:kswThumbColor="@color/write"
+        app:kswThumbHeight="@dimen/sb_h_w"
+        app:kswThumbWidth="@dimen/sb_h_w"
+        app:layout_constraintLeft_toRightOf="@+id/tv_tsc"
+        app:layout_constraintTop_toTopOf="@+id/tv_tsc"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_tsc"
+        >
+    </com.kyleduo.switchbutton.SwitchButton>
+
+    <Button
+        android:id="@+id/tsc_bt_print"
+        android:text="打印"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/write"
+        android:textSize="@dimen/tv_fontsize"
+        android:layout_width="@dimen/bt_sb_width"
+        android:layout_height="@dimen/tv_height"
+        android:layout_marginLeft="@dimen/tv_height"
+        app:layout_constraintLeft_toRightOf="@+id/tsc_sb_setting"
+        app:layout_constraintTop_toTopOf="@+id/tv_tsc"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_tsc"
+        />
+
+</android.support.constraint.ConstraintLayout>
