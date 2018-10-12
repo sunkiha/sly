@@ -2,25 +2,23 @@ package com.cloudabull.fangpai;
 
 import android.Manifest;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
+import android.view.InputDevice;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.kongqw.serialportlibrary.PrintSerialPort;
 import com.kongqw.serialportlibrary.SerialPortManager;
 import com.kongqw.serialportlibrary.listener.OnOpenSerialPortListener;
 import com.kongqw.serialportlibrary.listener.OnSerialPortDataListener;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,38 +33,24 @@ import static com.cloudabull.fangpai.PrinterCmdUtils2.fontSizeSetBig;
 import static com.cloudabull.fangpai.PrinterCmdUtils2.isZhongWen;
 import static com.cloudabull.fangpai.PrinterCmdUtils2.nextLine;
 
-/*
-import fangpai.cloudabull.com.serialportlibrary.PrintUtils;
-import fangpai.cloudabull.com.serialportlibrary.serial.SerialPortManager;
-import fangpai.cloudabull.com.serialportlibrary.serial.listener.OnDataReceivedListener;
-import fangpai.cloudabull.com.serialportlibrary.utils.SystemUtil;
-import kr.co.namee.permissiongen.PermissionGen;
 
-import static fangpai.cloudabull.com.serialportlibrary.PrinterCmdUtils.alignCenter;
-import static fangpai.cloudabull.com.serialportlibrary.PrinterCmdUtils.alignLeft;
-import static fangpai.cloudabull.com.serialportlibrary.PrinterCmdUtils.alignRight;
-import static fangpai.cloudabull.com.serialportlibrary.PrinterCmdUtils.byteMerger;
-import static fangpai.cloudabull.com.serialportlibrary.PrinterCmdUtils.feedPaperCutPartial;
-import static fangpai.cloudabull.com.serialportlibrary.PrinterCmdUtils.fontSizeSetBig;
-import static fangpai.cloudabull.com.serialportlibrary.PrinterCmdUtils.isZhongWen;
-import static fangpai.cloudabull.com.serialportlibrary.PrinterCmdUtils.nextLine;
-*/
-
-public class MainActivity extends AppCompatActivity {
-
-    // private PrintUtils printUtils;
+public class QrPrintTestAty extends AppCompatActivity {
     EditText editText;
     EditText dt;
+    EditText qdcontent;
     SerialPortManager serialPortManager;
+    StringBuffer scannerResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        scannerResult=new StringBuffer();
         editText = findViewById(R.id.d);
+        qdcontent = findViewById(R.id.qdcontent);
         dt = findViewById(R.id.dt);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            PermissionGen.with(MainActivity.this)
+            PermissionGen.with(QrPrintTestAty.this)
                     .addRequestCode(100)
                     .permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     .request();
@@ -98,20 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void opens(View view) {
-        //Toast.makeText(this, SystemUtil.getDeviceBrand(), Toast.LENGTH_LONG).show();
-
-        serialPortManager.openSerialPort(editText.getText().toString(), 9600);
-        // printUtils = PrintUtils.getInstance(this);
-   /*     printUtils = PrintUtils.getInstance(this);
-        printUtils.openPort(editText.getText().toString(), 9600);
-        printUtils.setListener(new OnDataReceivedListener() {
-            @Override
-            public void onDataReceived(String data) {
-                Log.d("xxxxxxxxxx", "returnData: " + data);
-                Toast.makeText(MainActivity.this, data, Toast.LENGTH_LONG).show();
-            }
-
-        });*/
+        Toast.makeText(editText.getContext(), "打开打印机", Toast.LENGTH_SHORT).show();
+        serialPortManager.openSerialPort(editText.getText().toString(), Integer.parseInt(dt.getText().toString()));
     }
 
     public void printData(View view) {
@@ -131,12 +103,12 @@ public class MainActivity extends AppCompatActivity {
                 serialPortManager.sendBytes(printerBill(bill));
             }
         }, 200L);
-
-        // printUtils.sendHexCMD(printerBill(bill));
+        Toast.makeText(editText.getContext(), "打印小票", Toast.LENGTH_SHORT).show();
     }
 
     public void closePort(View view) {
         serialPortManager.closeSerialPort();
+        Toast.makeText(editText.getContext(), "关闭打印机", Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -291,5 +263,58 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return result;
+    }
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        int keyCode = event.getKeyCode();
+
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            char aChar = getInputCode(event);
+            if (aChar != 0) {
+                scannerResult.append(aChar);
+            }
+            if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                //若为回车键，直接返回
+                qdcontent.setText(scannerResult);
+                scannerResult = new StringBuffer();
+            }
+
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
+
+    //获取扫描内容
+    private char getInputCode(KeyEvent event) {
+        int keyCode = event.getKeyCode();
+        boolean mCaps=false;
+        char aChar;
+        if (keyCode >= KeyEvent.KEYCODE_A && keyCode <= KeyEvent.KEYCODE_Z) {
+            //字母
+            aChar = (char) ((mCaps ? 'A' : 'a') + keyCode - KeyEvent.KEYCODE_A);
+        } else if (keyCode >= KeyEvent.KEYCODE_0 && keyCode <= KeyEvent.KEYCODE_9) {
+            //数字
+            aChar = (char) ('0' + keyCode - KeyEvent.KEYCODE_0);
+        } else {
+            //其他符号
+            switch (keyCode) {
+                case KeyEvent.KEYCODE_PERIOD:
+                    aChar = '.';
+                    break;
+                case KeyEvent.KEYCODE_MINUS:
+                    aChar = mCaps ? '_' : '-';
+                    break;
+                case KeyEvent.KEYCODE_SLASH:
+                    aChar = '/';
+                    break;
+                case KeyEvent.KEYCODE_BACKSLASH:
+                    aChar = mCaps ? '|' : '\\';
+                    break;
+                default:
+                    aChar = 0;
+                    break;
+            }
+        }
+        return aChar;
     }
 }

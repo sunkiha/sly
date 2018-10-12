@@ -3,41 +3,54 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" android:orientation="vertical"
-    tools:context="com.cloudabull.fangpai.MainActivity">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <EditText android:id="@+id/qdcontent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="二维码对准扫描器获取内容"
+         />
+
     <EditText
         android:id="@+id/d"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="/dev/ttyS0" />
+    <EditText
+        android:id="@+id/dt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="9600" />
     <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="opens"
-        android:layout_width="500dp"
-        android:layout_height="100dp"
-        android:text="open!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <Button
-        android:onClick="printData"
-        android:layout_width="500dp"
-        android:layout_height="100dp"
-        android:text="print!"
+        android:text="打开打印机"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:onClick="closePort"
-        android:layout_width="500dp"
-        android:layout_height="100dp"
-        android:text="close Port!"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="printData"
+        android:text="打印小票"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-     />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="closePort"
+        android:text="关闭打印机"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </LinearLayout>
